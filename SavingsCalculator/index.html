@@ -5,9 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Savings Calculator</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <div>Savings Calculator</div>
+    <div id="savings-calculator">
+      <!-- Section 1 -->
+      <div id="question-1" class="slider-container">
+        <h4>Kiek vidutiniškai per dieną surūkai cigarečių?</h4>
+        <div class="slider-wrapper">
+          <input
+            type="range"
+            id="slider-1"
+            class="slider"
+            min="1"
+            max="80"
+            value="20"
+          />
+          <input
+            id="cigarette-amount"
+            type="number"
+            min="1"
+            max="80"
+            step="1"
+            value="20"
+          />
+        </div>
+      </div>
+      <!-- Section 2 -->
+      <div id="question-2" class="slider-container">
+        <h4>Kiek kainuoja cigarečių pakelis?</h4>
+        <div class="slider-wrapper">
+          <input
+            type="range"
+            id="slider-2"
+            class="slider"
+            min="1"
+            max="15"
+            value="4"
+          />
+          <div>
+            <input id="pack-price" type="text" min="1" max="15" value="4" />
+          </div>
+        </div>
+      </div>
+      <div class="expenses-card-container">
+        <div class="expenses-card">
+          <span id="per-day"></span>
+          <p>per dieną</p>
+        </div>
+        <div class="expenses-card">
+          <span id="per-week"></span>
+          <p>per savaitę</p>
+        </div>
+        <div class="expenses-card">
+          <span id="per-month"></span>
+          <p>per mėnesį</p>
+        </div>
+      </div>
+      <div>
+        <p class="savings">
+          Per 1 metus sutaupytum:&nbsp;&nbsp;&nbsp; <span id="one-year"></span>
+        </p>
+        <p class="savings">
+          Per 5 metus sutaupytum:&nbsp;&nbsp;&nbsp;
+          <span id="five-years"></span>
+        </p>
+        <p class="savings">
+          Per 10 metų sutaupytum:&nbsp;&nbsp;&nbsp; <span id="ten-years"></span>
+        </p>
+      </div>
+    </div>
   </body>
 </html>
