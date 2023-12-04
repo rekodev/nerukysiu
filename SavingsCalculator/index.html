@@ -13,6 +13,15 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"
+      defer
+    ></script>
+
     <script src="./script.js" defer></script>
   </head>
   <body>
@@ -21,14 +30,7 @@
       <div id="question-1" class="slider-container">
         <h4>Kiek vidutiniškai per dieną surūkai cigarečių?</h4>
         <div class="slider-wrapper">
-          <input
-            type="range"
-            id="slider-1"
-            class="slider"
-            min="1"
-            max="80"
-            value="20"
-          />
+          <div id="slider-1" class="slider-styled"></div>
           <input
             id="cigarette-amount"
             type="number"
@@ -43,14 +45,7 @@
       <div id="question-2" class="slider-container">
         <h4>Kiek kainuoja cigarečių pakelis?</h4>
         <div class="slider-wrapper">
-          <input
-            type="range"
-            id="slider-2"
-            class="slider"
-            min="1"
-            max="15"
-            value="4"
-          />
+          <div id="slider-2" class="slider-styled"></div>
           <div>
             <input id="pack-price" type="text" min="1" max="15" value="4" />
           </div>

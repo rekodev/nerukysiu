@@ -1,6 +1,27 @@
 // Variables
 const sliderOne = document.getElementById('slider-1');
 const sliderTwo = document.getElementById('slider-2');
+
+noUiSlider.create(sliderOne, {
+  start: [20],
+  step: 1,
+  range: {
+    min: 1,
+    max: 80,
+  },
+  connect: 'lower',
+});
+
+noUiSlider.create(sliderTwo, {
+  start: [4],
+  step: 1,
+  range: {
+    min: 1,
+    max: 15,
+  },
+  connect: 'lower',
+});
+
 const cigaretteAmountInput = document.getElementById('cigarette-amount');
 const packPriceInput = document.getElementById('pack-price');
 
@@ -30,33 +51,36 @@ const formatCurrency = (number) =>
   );
 
 const reactToChange = () => {
-  cigaretteAmountInput.value = sliderOne.value;
-  packPriceInput.value = sliderTwo.value + ' €';
+  const sliderOneValue = Number(sliderOne.noUiSlider.get());
+  const sliderTwoValue = Number(sliderTwo.noUiSlider.get());
+
+  // Update the input fields
+  cigaretteAmountInput.value = sliderOneValue;
+  packPriceInput.value = sliderTwoValue + ' €';
 
   perDay.innerText = formatCurrency(
-    calculateSmokingCostPerYear(sliderOne.value, sliderTwo.value)
+    calculateSmokingCostPerYear(sliderOneValue, sliderTwoValue)
   );
   perWeek.innerText = formatCurrency(
-    calculateSmokingCostPerYear(sliderOne.value, sliderTwo.value, 7)
+    calculateSmokingCostPerYear(sliderOneValue, sliderTwoValue, 7)
   );
   perMonth.innerText = formatCurrency(
-    calculateSmokingCostPerYear(sliderOne.value, sliderTwo.value, 30)
+    calculateSmokingCostPerYear(sliderOneValue, sliderTwoValue, 30)
   );
 
   savingsAfterOneYear.innerText = formatCurrency(
-    calculateSmokingCostPerYear(sliderOne.value, sliderTwo.value, 365)
+    calculateSmokingCostPerYear(sliderOneValue, sliderTwoValue, 365)
   );
   savingsAfterFiveYears.innerText = formatCurrency(
-    calculateSmokingCostPerYear(sliderOne.value, sliderTwo.value, 365 * 5)
+    calculateSmokingCostPerYear(sliderOneValue, sliderTwoValue, 365 * 5)
   );
   savingsAfterTenYears.innerText = formatCurrency(
-    calculateSmokingCostPerYear(sliderOne.value, sliderTwo.value, 365 * 10)
+    calculateSmokingCostPerYear(sliderOneValue, sliderTwoValue, 365 * 10)
   );
 };
 
 const handleCigaretteAmountInput = () => {
-  sliderOne.value = cigaretteAmountInput.value;
-
+  sliderOne.noUiSlider.set(cigaretteAmountInput.value);
   reactToChange();
 };
 
@@ -71,14 +95,14 @@ const handlePackPriceInput = () => {
   }
 
   packPriceInput.value = price + ' €';
-  sliderTwo.value = price;
+  sliderTwo.noUiSlider.set(price);
 
   reactToChange();
 };
 
 // Event Listeners
-sliderOne.addEventListener('input', reactToChange);
-sliderTwo.addEventListener('input', reactToChange);
+sliderOne.noUiSlider.on('update', reactToChange);
+sliderTwo.noUiSlider.on('update', reactToChange);
 cigaretteAmountInput.addEventListener('change', handleCigaretteAmountInput);
 packPriceInput.addEventListener('change', handlePackPriceInput);
 
