@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Addiction Quiz</title>
     <link rel="stylesheet" href="./style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <div>Addiction Quiz</div>
+    <div id="quiz">
+      <h4 id="question"></h4>
+      <div id="answers"></div>
+      <h6>
+        Klausimas <strong id="question-index"></strong> iš
+        <strong id="question-length"></strong>
+      </h6>
+      <button id="next-question">Kitas klausimas</button>
+    </div>
   </body>
 </html>
