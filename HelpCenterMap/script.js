@@ -186,6 +186,7 @@ const map = new mapboxgl.Map({
 });
 
 const filterButton = document.getElementById('filter-button');
+const resetButton = document.getElementById('reset-button');
 const selectCity = document.getElementById('city');
 const selectType = document.getElementById('type');
 let currentCity = '';
@@ -285,9 +286,28 @@ const filterHelpCenters = (city, type) => {
   );
 };
 
+const resetFilters = () => {
+  selectCity.selectedIndex = 0;
+  selectType.selectedIndex = 0;
+
+  removeAllMarkers();
+
+  helpCenters.forEach((helpCenter) =>
+    generateMarker(
+      map,
+      helpCenter.coordinates,
+      helpCenter.title,
+      helpCenter.phone,
+      helpCenter.email,
+      helpCenter.website
+    )
+  );
+};
+
 filterButton.addEventListener('click', () =>
   filterHelpCenters(currentCity, currentType)
 );
+resetButton.addEventListener('click', resetFilters);
 
 selectCity.addEventListener('change', (e) => {
   currentCity = e.target.value;
