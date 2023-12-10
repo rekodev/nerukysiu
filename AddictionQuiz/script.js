@@ -252,7 +252,6 @@ const handleNextQuestionButtonClick = (points) => {
   totalPoints += points;
 
   if (nextQuestionButton.className.includes(FINISH)) {
-    alert('Yeehaw');
     renderPostQuiz(totalPoints);
     return;
   }

@@ -245,52 +245,48 @@ const addActiveClassToBodyPart = (index) => {
       circulatorySystemFemale.classList.add('active');
       break;
     case 2:
-      lungsMale.classList.add('active');
-      lungsFemale.classList.add('active');
+      eyesMale.classList.add('active');
+      eyesFemale.classList.add('active');
       tracheaMale.classList.add('active');
       tracheaFemale.classList.add('active');
+      circulatorySystemMale.classList.add('active');
+      circulatorySystemFemale.classList.add('active');
       break;
     case 3:
-      teethMale.classList.add('active');
-      teethFemale.classList.add('active');
       break;
     case 4:
-      lungsMale.classList.add('active');
-      lungsFemale.classList.add('active');
-      tracheaMale.classList.add('active');
-      tracheaFemale.classList.add('active');
+      liverMale.classList.add('active');
+      liverFemale.classList.add('active');
       break;
     case 5:
       lungsMale.classList.add('active');
       lungsFemale.classList.add('active');
-      circulatorySystemMale.classList.add('active');
-      circulatorySystemFemale.classList.add('active');
       break;
     case 6:
-      lungsMale.classList.add('active');
-      lungsFemale.classList.add('active');
-      tracheaMale.classList.add('active');
-      tracheaFemale.classList.add('active');
       break;
     case 7:
       circulatorySystemMale.classList.add('active');
       circulatorySystemFemale.classList.add('active');
       break;
     case 8:
-      circulatorySystemMale.classList.add('active');
-      circulatorySystemFemale.classList.add('active');
-      break;
-    case 9:
       lungsMale.classList.add('active');
       lungsFemale.classList.add('active');
       tracheaMale.classList.add('active');
       tracheaFemale.classList.add('active');
+      circulatorySystemMale.classList.add('active');
+      circulatorySystemFemale.classList.add('active');
+      break;
+    case 9:
       break;
     case 10:
       circulatorySystemMale.classList.add('active');
       circulatorySystemFemale.classList.add('active');
       break;
     case 11:
+      circulatorySystemMale.classList.add('active');
+      circulatorySystemFemale.classList.add('active');
+      lungsMale.classList.add('active');
+      lungsFemale.classList.add('active');
       break;
 
     default:
@@ -346,3 +342,7 @@ genderFemale.addEventListener('click', () => {
 
   setTimeout(enableTransitions, 200);
 });
+
+document.addEventListener('DOMContentLoaded', () =>
+  generateTextContentElement(timelineTextsContent[0])
+);

@@ -7,10 +7,14 @@
 body {
   color: white;
   font-family: 'Montserrat', sans-serif;
-  background-color: black;
+  color: #1a1a1a;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h4 {
+#savings-calculator h4 {
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -52,14 +56,15 @@ h4 {
 }
 
 .expenses-card {
-  border: 0.5px solid #a3d0e9;
-  background-color: #5aaed9;
+  border: 0.5px solid #eee;
+  background: linear-gradient(45deg, #081f3d, #000417);
   padding: 7.5px 15px;
   width: calc(100% / 3);
   display: flex;
   gap: 4px;
   flex-direction: column;
   text-align: center;
+  color: #fff;
 }
 
 .expenses-card:nth-child(2) {
@@ -122,13 +127,14 @@ h4 {
   border: none;
   box-shadow: none;
   width: 100%;
+  background-color: #eee;
 }
 
 #slider-1 .noUi-connect,
 #slider-2 .noUi-connect {
   background: none;
   border: none;
-  background-color: #58d2e4;
+  background-color: #ff1d42;
 }
 
 #slider-1 .noUi-handle,
@@ -138,5 +144,5 @@ h4 {
   top: -6.5px;
   right: -9px; /* half the width */
   border-radius: 9px;
-  border: 4px solid #ff1d42;
+  border: 4px solid #d30023;
 }
