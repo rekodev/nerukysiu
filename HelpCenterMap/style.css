@@ -8,32 +8,28 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-select,
-option,
-button {
-  font-family: 'Montserrat', sans-serif;
-  width: 360px;
-  height: 40px;
-}
-
-option {
-  padding: 20px;
-}
-
-button {
+#filter-panel button {
   background-color: #2b2b3a;
   color: #fff;
   cursor: pointer;
   border: none;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  height: 40px;
 }
 
-button:hover {
+#filter-panel button:hover {
   transition: 0.2s;
   background-color: #e92239;
 }
 
 #reset-button {
   width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 #map-container {
@@ -57,6 +53,16 @@ button:hover {
   height: 100%;
 }
 
+.mapboxgl-popup-close-button {
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background-color: #e92239;
+  color: #fff;
+}
+
 .mapbox-popup {
   display: flex;
   flex-direction: column;
@@ -73,6 +79,7 @@ button:hover {
   font-weight: 300;
   letter-spacing: 1px;
   margin-bottom: -5px;
+  padding-right: 8px;
 }
 
 .mapbox-popup h6 {
@@ -98,6 +105,7 @@ button:hover {
   color: #2b2b3a;
   border: 1px solid #e0e0e0;
   cursor: pointer;
+  height: 40px;
 }
 
 .custom-select {
@@ -130,6 +138,7 @@ ul.custom-options {
 }
 
 .custom-select.open ul.custom-options {
+  z-index: 1;
   min-height: 20px;
   width: 100%;
   left: 0;
@@ -155,4 +164,37 @@ ul.custom-options {
 .custom-options .option.selected:hover {
   background-color: #f0f0f0;
   color: #2b2b3a;
+}
+
+@media screen and (max-width: 992px) {
+  #filter-panel {
+    flex-direction: column;
+    gap: 8px;
+    top: 24px;
+    left: 24px;
+  }
+
+  .filter-buttons {
+    width: 100%;
+  }
+
+  #filter-button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #filter-panel {
+    width: 80%;
+  }
+
+  .custom-select-wrapper {
+    min-width: initial;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #filter-panel {
+    width: 70%;
+  }
 }

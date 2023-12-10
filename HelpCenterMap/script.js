@@ -185,6 +185,13 @@ const map = new mapboxgl.Map({
   zoom: 6.2,
 });
 
+const fullscreenControl = new mapboxgl.FullscreenControl();
+const nav = new mapboxgl.NavigationControl();
+
+map.addControl(fullscreenControl, 'top-right');
+map.addControl(nav, 'bottom-right');
+map.scrollZoom.disable();
+
 const filterButton = document.getElementById('filter-button');
 const resetButton = document.getElementById('reset-button');
 
@@ -329,6 +336,7 @@ const resetFilters = () => {
   currentType = '';
   citySelectTriggerTextElement.textContent = '--- Pasirinkite miestą ---';
   typeSelectTriggerTextElement.textContent = '--- Pasirinkite tipą ---';
+  cityOptionsContainer.scrollTop = 0;
 
   const allCityOptions = document.querySelectorAll('#city-options .option');
   const allTypeOptions = document.querySelectorAll('#type-options .option');
@@ -347,12 +355,11 @@ const resetFilters = () => {
       helpCenter.website
     )
   );
-
-  cityOptionsContainer.scrollTop = 0;
 };
 
 const handleCitySelectClick = () => {
   if (citySelectElement.className.includes('open')) {
+    cityOptionsContainer.scrollTop = 0;
     citySelectElement.classList.remove('open');
 
     return;
@@ -383,6 +390,7 @@ typeSelectElement.addEventListener('click', handleTypeSelectClick);
 
 document.addEventListener('click', (event) => {
   if (clickOutsideElement(event, citySelectElement)) {
+    cityOptionsContainer.scrollTop = 0;
     citySelectElement.classList.remove('open');
   }
 
