@@ -187,8 +187,20 @@ const map = new mapboxgl.Map({
 
 const filterButton = document.getElementById('filter-button');
 const resetButton = document.getElementById('reset-button');
-const selectCity = document.getElementById('city');
-const selectType = document.getElementById('type');
+
+const citySelectElement = document.querySelector('[data-select="city"]');
+const typeSelectElement = document.querySelector('[data-select="type"]');
+
+const citySelectTriggerTextElement = document.querySelector(
+  '[data-select="city"] .custom-select-trigger p'
+);
+const typeSelectTriggerTextElement = document.querySelector(
+  '[data-select="type"] .custom-select-trigger p'
+);
+
+const cityOptionsContainer = document.getElementById('city-options');
+const typeOptionsContainer = document.getElementById('type-options');
+
 let currentCity = '';
 let currentType = '';
 
@@ -223,6 +235,10 @@ const generateMarker = (map, coordinates, title, phone, emails, website) => {
   markers.push(marker);
 };
 
+const deselectOptions = (options) => {
+  options.forEach((option) => option.classList.remove('selected'));
+};
+
 const generateOptionsAndMarkers = () => {
   // Options
   const cities = [];
@@ -232,19 +248,41 @@ const generateOptionsAndMarkers = () => {
     if (!cities.includes(helpCenter.city)) {
       cities.push(helpCenter.city);
 
-      const optionCity = document.createElement('option');
-      optionCity.value = helpCenter.city;
+      const optionCity = document.createElement('div');
+      optionCity.classList.add('option');
       optionCity.textContent = helpCenter.city;
-      selectCity.appendChild(optionCity);
+      optionCity.addEventListener('click', () => {
+        const allCityOptions = document.querySelectorAll(
+          '#city-options .option'
+        );
+        deselectOptions(allCityOptions);
+
+        currentCity = helpCenter.city;
+        optionCity.classList.add('selected');
+        citySelectTriggerTextElement.textContent = optionCity.textContent;
+      });
+
+      cityOptionsContainer.appendChild(optionCity);
     }
 
     if (!types.includes(helpCenter.type)) {
       types.push(helpCenter.type);
 
-      const optionType = document.createElement('option');
-      optionType.value = helpCenter.type;
+      const optionType = document.createElement('div');
+      optionType.classList.add('option');
       optionType.textContent = helpCenter.type;
-      selectType.appendChild(optionType);
+      optionType.addEventListener('click', () => {
+        const allTypeOptions = document.querySelectorAll(
+          '#type-options .option'
+        );
+        deselectOptions(allTypeOptions);
+
+        currentType = helpCenter.type;
+        optionType.classList.add('selected');
+        typeSelectTriggerTextElement.textContent = optionType.textContent;
+      });
+
+      typeOptionsContainer.appendChild(optionType);
     }
   });
 
@@ -287,8 +325,15 @@ const filterHelpCenters = (city, type) => {
 };
 
 const resetFilters = () => {
-  selectCity.selectedIndex = 0;
-  selectType.selectedIndex = 0;
+  currentCity = '';
+  currentType = '';
+  citySelectTriggerTextElement.textContent = '--- Pasirinkite miestą ---';
+  typeSelectTriggerTextElement.textContent = '--- Pasirinkite tipą ---';
+
+  const allCityOptions = document.querySelectorAll('#city-options .option');
+  const allTypeOptions = document.querySelectorAll('#type-options .option');
+  deselectOptions(allCityOptions);
+  deselectOptions(allTypeOptions);
 
   removeAllMarkers();
 
@@ -302,20 +347,51 @@ const resetFilters = () => {
       helpCenter.website
     )
   );
+
+  cityOptionsContainer.scrollTop = 0;
 };
+
+const handleCitySelectClick = () => {
+  if (citySelectElement.className.includes('open')) {
+    citySelectElement.classList.remove('open');
+
+    return;
+  }
+
+  citySelectElement.classList.add('open');
+};
+
+const handleTypeSelectClick = () => {
+  if (typeSelectElement.className.includes('open')) {
+    typeSelectElement.classList.remove('open');
+
+    return;
+  }
+
+  typeSelectElement.classList.add('open');
+};
+
+// Function to check if a click occurred outside of an element
+const clickOutsideElement = (event, element) => !element.contains(event.target);
+
+document.addEventListener('DOMContentLoaded', () => {
+  generateOptionsAndMarkers();
+});
+
+citySelectElement.addEventListener('click', handleCitySelectClick);
+typeSelectElement.addEventListener('click', handleTypeSelectClick);
+
+document.addEventListener('click', (event) => {
+  if (clickOutsideElement(event, citySelectElement)) {
+    citySelectElement.classList.remove('open');
+  }
+
+  if (clickOutsideElement(event, typeSelectElement)) {
+    typeSelectElement.classList.remove('open');
+  }
+});
 
 filterButton.addEventListener('click', () =>
   filterHelpCenters(currentCity, currentType)
 );
 resetButton.addEventListener('click', resetFilters);
-
-selectCity.addEventListener('change', (e) => {
-  currentCity = e.target.value;
-  console.log(currentCity);
-});
-
-selectType.addEventListener('change', (e) => {
-  currentType = e.target.value;
-});
-
-document.addEventListener('DOMContentLoaded', generateOptionsAndMarkers);
