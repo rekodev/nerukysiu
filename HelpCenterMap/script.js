@@ -9,15 +9,6 @@ const helpCenters = [
     website: 'https://www.varenosvsb.lt',
   },
   {
-    title: 'Telšių rajono savivaldybės visuomenės sveikatos biuras',
-    city: 'Telšiai',
-    type: 'Konsultacijos telefonu',
-    coordinates: [22.250524, 55.983813],
-    phone: ['(8 4) 446 0155', '(8 6) 098 4701'],
-    email: ['info@telsiurvsb.lt'],
-    website: 'https://www.telsiuvsb.lt',
-  },
-  {
     title: 'Elektrėnų savivaldybės visuomenės sveikatos biuras',
     city: 'Elektrėnai',
     type: 'Konsultacijos elektroniniu paštu',
@@ -27,15 +18,6 @@ const helpCenters = [
     website: 'https://www.elektrenuvsb.lt',
   },
   {
-    title: 'Valstybinis psichikos sveikatos centras',
-    city: 'Vilnius',
-    type: 'Konsultacijos elektroniniu paštu',
-    coordinates: [25.417941, 54.685644],
-    phone: ['(8 5) 267 1811', '(8 5) 210 2815'],
-    email: ['info@vpsc.lt'],
-    website: 'https://www.vpsc.lt',
-  },
-  {
     title: 'Druskininkų savivaldybės visuomenės sveikatos biuras',
     city: 'Druskininkai',
     type: 'Konsultacijos elektroniniu paštu',
@@ -43,15 +25,6 @@ const helpCenters = [
     phone: ['(8 6) 821 0908', '(8 6) 129 7211'],
     email: ['vsb@druskininkai.lt', 'info@vyrukriziucentras.lt'],
     website: 'https://www.druskininkuvsb.lt',
-  },
-  {
-    title: 'Panevėžio miesto savivaldybės visuomenės sveikatos biuras',
-    city: 'Panevėžys',
-    type: 'Konsultacijos elektroniniu paštu',
-    coordinates: [24.357019, 55.729693],
-    phone: ['(8 4) 546 7506', '(8 6) 002 3332', '(8 6) 559 6099'],
-    email: ['info@panevezysvsb.lt'],
-    website: 'https://www.panevezysvsb.lt',
   },
   {
     title: 'Jonavos rajono visuomenės sveikatos biuras',
@@ -151,7 +124,7 @@ const helpCenters = [
     city: 'Klaipėda',
     type: 'Individualios specialistų konsultacijos',
     coordinates: [21.149621, 55.693712],
-    phone: ['(8 4) 641 5025', '(8 4) 641 0650'],
+    phone: ['(8 4) 641 5025'],
     email: ['registratura.klaipeda@rplc.lt'],
     website: 'https://www.rplc.lt/filialai/klaipedos-filialas',
   },
@@ -160,7 +133,7 @@ const helpCenters = [
     city: 'Šiauliai',
     type: 'Individualios specialistų konsultacijos',
     coordinates: [23.30857, 55.906355],
-    phone: ['(8 4) 145 5644', '(8 4) 145 6456'],
+    phone: ['(8 4) 145 5644'],
     email: ['registratura.siauliai@rplc.lt'],
     website: 'https://www.rplc.lt/filialai/siauliu-filialas',
   },
@@ -168,7 +141,7 @@ const helpCenters = [
     title: 'Respublikinio priklausomybės ligų centro Vilniaus filialas',
     city: 'Vilnius',
     type: 'Individualios specialistų konsultacijos',
-    coordinates: [25.318951, 54.715229],
+    coordinates: [25.242691, 54.671405],
     phone: ['(8 5) 213 7808'],
     email: ['registratura@rplc.lt'],
     website: 'https://www.rplc.lt/filialai/vilniaus-filialas',
@@ -304,20 +277,14 @@ const filterButton = document.getElementById('filter-button');
 const resetButton = document.getElementById('reset-button');
 
 const citySelectElement = document.querySelector('[data-select="city"]');
-const typeSelectElement = document.querySelector('[data-select="type"]');
 
 const citySelectTriggerTextElement = document.querySelector(
   '[data-select="city"] .custom-select-trigger p'
 );
-const typeSelectTriggerTextElement = document.querySelector(
-  '[data-select="type"] .custom-select-trigger p'
-);
 
 const cityOptionsContainer = document.getElementById('city-options');
-const typeOptionsContainer = document.getElementById('type-options');
 
 let currentCity = '';
-let currentType = '';
 
 let markers = [];
 
@@ -357,7 +324,6 @@ const deselectOptions = (options) => {
 const generateOptionsAndMarkers = () => {
   // Options
   const cities = [];
-  const types = [];
 
   helpCenters.forEach((helpCenter) => {
     if (!cities.includes(helpCenter.city)) {
@@ -379,26 +345,6 @@ const generateOptionsAndMarkers = () => {
 
       cityOptionsContainer.appendChild(optionCity);
     }
-
-    if (!types.includes(helpCenter.type)) {
-      types.push(helpCenter.type);
-
-      const optionType = document.createElement('div');
-      optionType.classList.add('option');
-      optionType.textContent = helpCenter.type;
-      optionType.addEventListener('click', () => {
-        const allTypeOptions = document.querySelectorAll(
-          '#type-options .option'
-        );
-        deselectOptions(allTypeOptions);
-
-        currentType = helpCenter.type;
-        optionType.classList.add('selected');
-        typeSelectTriggerTextElement.textContent = optionType.textContent;
-      });
-
-      typeOptionsContainer.appendChild(optionType);
-    }
   });
 
   // Markers
@@ -419,12 +365,11 @@ const removeAllMarkers = () => {
   markers = [];
 };
 
-const filterHelpCenters = (city, type) => {
+const filterHelpCenters = (city) => {
   removeAllMarkers();
 
-  const filteredHelpCenters = helpCenters.filter(
-    (helpCenter) =>
-      helpCenter.city.includes(city) && helpCenter.type.includes(type)
+  const filteredHelpCenters = helpCenters.filter((helpCenter) =>
+    helpCenter.city.includes(city)
   );
 
   filteredHelpCenters.forEach((helpCenter) =>
@@ -441,15 +386,14 @@ const filterHelpCenters = (city, type) => {
 
 const resetFilters = () => {
   currentCity = '';
-  currentType = '';
+
   citySelectTriggerTextElement.textContent = '--- Pasirinkite miestą ---';
-  typeSelectTriggerTextElement.textContent = '--- Pasirinkite tipą ---';
+
   cityOptionsContainer.scrollTop = 0;
 
   const allCityOptions = document.querySelectorAll('#city-options .option');
-  const allTypeOptions = document.querySelectorAll('#type-options .option');
+
   deselectOptions(allCityOptions);
-  deselectOptions(allTypeOptions);
 
   removeAllMarkers();
 
@@ -476,16 +420,6 @@ const handleCitySelectClick = () => {
   citySelectElement.classList.add('open');
 };
 
-const handleTypeSelectClick = () => {
-  if (typeSelectElement.className.includes('open')) {
-    typeSelectElement.classList.remove('open');
-
-    return;
-  }
-
-  typeSelectElement.classList.add('open');
-};
-
 // Function to check if a click occurred outside of an element
 const clickOutsideElement = (event, element) => !element.contains(event.target);
 
@@ -494,20 +428,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 citySelectElement.addEventListener('click', handleCitySelectClick);
-typeSelectElement.addEventListener('click', handleTypeSelectClick);
 
 document.addEventListener('click', (event) => {
   if (clickOutsideElement(event, citySelectElement)) {
     cityOptionsContainer.scrollTop = 0;
     citySelectElement.classList.remove('open');
   }
-
-  if (clickOutsideElement(event, typeSelectElement)) {
-    typeSelectElement.classList.remove('open');
-  }
 });
 
-filterButton.addEventListener('click', () =>
-  filterHelpCenters(currentCity, currentType)
-);
+filterButton.addEventListener('click', () => filterHelpCenters(currentCity));
+
 resetButton.addEventListener('click', resetFilters);
