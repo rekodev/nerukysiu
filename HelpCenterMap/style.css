@@ -53,6 +53,10 @@ body {
   height: 100%;
 }
 
+.mapboxgl-popup {
+  z-index: 2;
+}
+
 .mapboxgl-popup-close-button {
   padding: 8px 12px;
   font-size: 1rem;
@@ -67,6 +71,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #686868;
+  z-index: 9999;
 }
 
 .mapbox-popup a {

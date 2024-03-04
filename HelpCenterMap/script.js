@@ -108,7 +108,7 @@ const helpCenters = [
     coordinates: [24.032352, 54.39894],
     phone: ['(8 3) 155 1653'],
     email: ['biuras@alytausvsb.lt'],
-    website: 'http://www.alytausrajonovsb.lt',
+    website: 'https://www.alytausvsb.lt/',
   },
   {
     title: 'Respublikinio priklausomybės ligų centro Kauno filialas',
