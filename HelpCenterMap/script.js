@@ -302,8 +302,9 @@ const helpCenters = [
 ];
 
 // Mapbox initialization
-mapboxgl.accessToken =
-  'pk.eyJ1IjoidmVyeWZhc3RzbmFpbCIsImEiOiJjbG95YmVxMXYwMmM5MmptdnEyOTZyNGE2In0.z1vsMrdrvQNzgrROLSXX2w';
+const MAPBOX_ACCESS_TOKEN = config.MAPBOX_ACCESS_TOKEN;
+
+mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/light-v11',
