@@ -299,6 +299,15 @@ const helpCenters = [
     email: ['biuras@svencioniuvsb.lt'],
     website: 'https://www.svencioniuvsb.lt/',
   },
+  {
+    title: 'Kalvarijos savivaldybės visuomenės sveikatos biuras',
+    city: 'Kalvarija',
+    type: 'Individualios specialistų konsultacijos',
+    coordinates: [23.222722, 54.414365],
+    phone: ['(8 3) 435 9213'],
+    email: ['info@marijampolesvsb.lt'],
+    website: 'https://www.marijampolesvsb.lt/',
+  },
 ];
 
 // Mapbox initialization
