@@ -36,6 +36,16 @@ const helpCenters = [
     website: "https://www.anyksciuvsb.lt",
   },
   {
+    title:
+      "Birštono savivaldybės gyventojai gali kreiptis į Kauno rajono visuomenės sveikatos biurą",
+    city: "Birštonas",
+    type: "Konsultacijos",
+    coordinates: [24.020556, 54.60278],
+    phone: ["0 686 42377"],
+    email: ["info.aukodeita@gmail.com"],
+    website: "https://www.kaunorvsb.lt",
+  },
+  {
     title: "Biržų rajono savivaldybės visuomenės sveikatos biuras",
     city: "Biržai",
     type: "Konsultacijos",
@@ -97,6 +107,16 @@ const helpCenters = [
     phone: ["0 447 41882"],
     email: ["info@jurbarkovsb.lt"],
     website: "https://www.jurbarkovsb.lt",
+  },
+  {
+    title:
+      "Kalvarijos savivaldybės gyventojai gali kreiptis į Marijampolės visuomenės sveikatos biurą",
+    city: "Kalvarija",
+    type: "Konsultacijos",
+    coordinates: [23.22583, 54.4141],
+    phone: ["0 608 23913"],
+    email: ["ineta.dabusinskaite@marijampolesvsb.lt"],
+    website: "https://marijampolesvsb.lt",
   },
   {
     title: "Kaišiadorių rajono savivaldybės visuomenės sveikatos biuras",
@@ -180,6 +200,16 @@ const helpCenters = [
     website: "https://www.kretingosvsb.lt/",
   },
   {
+    title:
+      "Neringos savivaldybės gyventojai gali kreiptis į Klaipėdos miesto visuomenės sveikatos biurą",
+    city: "Neringa",
+    type: "Konsultacijos",
+    coordinates: [21.00683, 55.30322],
+    phone: ["0 640 93348"],
+    email: ["siga@sveikatosbiuras.lt"],
+    website: "https://www.sveikatosbiuras.lt",
+  },
+  {
     title: "Lazdijų rajono savivaldybės visuomenės sveikatos biuras",
     city: "Lazdijai",
     type: "Konsultacijos",
@@ -196,6 +226,16 @@ const helpCenters = [
     phone: ["0 608 23913"],
     email: ["ineta.dabusinskaite@marijampolesvsb.lt"],
     website: "https://marijampolesvsb.lt",
+  },
+  {
+    title:
+      "Molėtų savivaldybės gyventojai gali kreiptis į Utenos rajono visuomenės sveikatos biurą",
+    city: "Molėtai",
+    type: "Konsultacijos dėl metimo rūkyti",
+    coordinates: [25.418001, 55.2265309],
+    phone: ["0 675 43542"],
+    email: ["info@utenavsb.lt"],
+    website: "https://www.utenavsb.lt",
   },
   {
     title: "Mažeikių rajono savivaldybės visuomenės sveikatos biuras",
@@ -270,6 +310,16 @@ const helpCenters = [
     website: "https://www.prienuvsb.lt",
   },
   {
+    title:
+      "Rietavo savivaldybės gyventojai gali kreiptis į Klaipėdos rajono visuomenės sveikatos biurą",
+    city: "Rietavas",
+    type: "Konsultacijos",
+    coordinates: [21.93333, 55.71667],
+    phone: ["0 46 453754"],
+    email: ["gargzdai.biuras@visuomenessveikata.lt"],
+    website: "http://www.visuomenessveikata.lt",
+  },
+  {
     title: "Radviliškio rajono savivaldybės visuomenės sveikatos biuras",
     city: "Radviliškis",
     type: "Konsultacijos",
@@ -304,6 +354,16 @@ const helpCenters = [
     phone: ["0 619 52289"],
     email: ["visaginas@rsveikata.lt"],
     website: "https://www.rsveikata.lt",
+  },
+  {
+    title:
+      "Skuodo savivaldybės gyventojai gali kreiptis į Klaipėdos rajono visuomenės sveikatos biurą",
+    city: "Skuodas",
+    type: "Konsultacijos",
+    coordinates: [21.53333, 56.26667],
+    phone: ["0 46 453754"],
+    email: ["gargzdai.biuras@visuomenessveikata.lt"],
+    website: "http://www.visuomenessveikata.lt",
   },
   {
     title: "Šakių rajono savivaldybės visuomenės sveikatos biuras",
